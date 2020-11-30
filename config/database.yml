@@ -1,0 +1,28 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['host_postgres'] %>
+  port: <%= ENV['port_postgres'] %>
+  username: <%= ENV['username_postgres'] %>
+  password: <%= ENV['password_postgres'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+  username_postgres: postgres
+  password_postgres: 123456
+  port_postgres: 5432
+  host_postgres: localhost
+
+development:
+  <<: *default
+  database: registro_development
+
+test:
+  <<: *default
+  database: registro_test
+
+production:
+  <<: *default
+  database: registro_production
+  username: registro
+  password: <%= ENV['REGISTRO_DATABASE_PASSWORD'] %>

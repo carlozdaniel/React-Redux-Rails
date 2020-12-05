@@ -3,7 +3,7 @@ class CreatePoliticas < ActiveRecord::Migration[5.2]
     create_table :politicas do |t|
       t.string :conjunto_politicas
       t.string :revision_politicas
-
+      t.references :empresa, foreign_key: true
       t.timestamps
     end
   end
